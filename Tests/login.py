@@ -213,24 +213,30 @@ class LoginTest(unittest.TestCase):
         message_18 = driver.find_element(By.NAME, 'save').text
         self.assertEqual(message_18, '')
 
+    def test_20_click_basket(self):
+        """Проверка кликабельности кнопки 'В корзине'"""
+        driver = self.driver
+
+        homepage = HomePage(driver)
+        homepage.click_basket()
+
+        page.sort_click_basket.scroll_to_element()
+        page.sort_click_basket.click()
+        page.wait_page_loaded()
+
+        message_19 = driver.find_element(By.XPATH, '//span[@id="basketCounter"]').text
+        self.assertEqual(message_19, '')
+
     def test_21_click_catalog_products(self):
         """Проверка выпадающего списка при нажатие на каталог товаров"""
         driver = self.driver
+        driver.find_element(By.XPATH, '//i[@class="icon icon-home"]').click()
 
         homepage = HomePage(driver)
         homepage.click_catalog_products()
 
-        product = [ 'КАТАЛОГ ТОВАРОВ'
-            # 'Спец цена по карте\nВсё для Пасхи!\nКоллекция In Bloom\nСад и огород'
-            # '\nПродукты и напитки\nСейчас покупают\nСтратегический запас\nДля дома'
-            # '\nБытовая химия\nКосметика и гигиена\nКрасота'
-            # '\nДекор для дома, товары для праздника\nКниги, раскраски'
-            # '\nДля животных\nЗдоровье\nКанцтовары\nСувениры и подарки'
-            # '\nАксессуары\nОдежда и обувь\nИгрушки\nАвто- и велотовары\nСпорт и туризм'
-            ]
-
-        message_20 = [element.text for element in driver.find_elements(By.XPATH, '//a[@href="#catalog-dropdown"]')]
-        self.assertEqual(product, message_20)
+        message_20 = driver.find_element(By.XPATH, '//*[@id="header"]/div[3]/div[1]/a').text
+        self.assertEqual(message_20, "КАТАЛОГ ТОВАРОВ")
 
     def test_22_click_spets_tsena_po_karte(self):
         """Проверка кликабельности кнопки 'Спец цена по карте' в каталоге товаров"""
@@ -272,20 +278,13 @@ class LoginTest(unittest.TestCase):
 
         self.assertEqual(len(products), len(button_pay))
 
-    def test_20_click_basket(self):
-        """Проверка кликабельности кнопки 'В корзине'"""
-        driver = self.driver
 
-        homepage = HomePage(driver)
-        homepage.click_basket()
-
-        message_19 = driver.find_element(By.CSS_SELECTOR, '#basketCounter').text
-        self.assertEqual(message_19, '')
 
     def test_26_check_buys(self):
         """Добавление товара в корзину (Подсолнечное масло "Классическое", Mr.Ricco, рафинированное, 1 л ).
         Наличие кнопки 'Перейти в корзину' в ней"""
         driver = self.driver
+        driver.find_element(By.XPATH, '// *[ @ id = "catalog-dropdown"] / nav / a[1]').click()
 
         homepage = HomePage(driver)
         homepage.click_add_to_basket()
@@ -294,7 +293,7 @@ class LoginTest(unittest.TestCase):
 
         message_24 = driver.find_element(By.LINK_TEXT, 'Перейти в корзину').is_displayed()
         self.assertEqual(message_24, True)
-
+    #
     def test_27_more_buys(self):
         """Наличие кнопки '+' для увеличения количества товара в корзине"""
         driver = self.driver
@@ -498,7 +497,7 @@ class LoginTest(unittest.TestCase):
         driver = self.driver
 
         homepage = HomePage(driver)
-        homepage.click_email_us()
+        homepage.click_email_us.scroll_to_element()
         time.sleep(5)
         message_46 = driver.find_element(By.LINK_TEXT, 'НАПИШИТЕ НАМ').is_displayed()
         self.assertEqual(message_46, True)
@@ -512,7 +511,7 @@ class LoginTest(unittest.TestCase):
         homepage = HomePage(driver)
         homepage.click_exit()
 
-        message_47 = driver.find_element(By.XPATH, '//*[@id="logout"]').text
+        message_47 = driver.find_element(By.XPATH, '//*[@id="header"]/div[2]/div/div[2]/a[1]').text
         self.assertEqual(message_47, '')
 
     @classmethod
