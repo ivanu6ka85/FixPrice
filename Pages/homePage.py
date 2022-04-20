@@ -24,7 +24,7 @@ class HomePage:
         self.old_password_name = Locators.old_password_name
         self.confirmation_new_password_name = Locators.confirmation_new_password_name
         self.click_save_changes_name = Locators.save_changes_name
-        self.click_basket_css_selector = Locators.basket_css_selector
+        self.click_basket_xpath = Locators.basket_xpath
         self.catalog_products_xpath = Locators.catalog_products_xpath
         self.spets_tsena_po_karte_xpath = Locators.spets_tsena_po_karte_xpath
         self.click_add_to_basket_link_text = Locators.click_add_to_basket_link_text
@@ -115,7 +115,7 @@ class HomePage:
         self.driver.find_element(By.XPATH, self.spets_tsena_po_karte_xpath).click()
 
     def click_basket(self):
-        self.driver.find_element(By.XPATH, self.click_basket_css_selector).click()
+        self.driver.find_element(By.XPATH, self.click_basket_xpath).click()
 
     def click_add_to_basket(self):
         self.driver.find_element(By.LINK_TEXT, self.click_add_to_basket_link_text).click()
