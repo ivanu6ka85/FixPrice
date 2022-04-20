@@ -27,9 +27,10 @@ class Locators:
     new_password_name = 'NEW_PASSWORD'
     confirmation_new_password_name = 'NEW_PASSWORD_CONFIRM'
     save_changes_name = 'save'
-    basket_css_selector = '#basketCounter'
+    basket_xpath = '//span[@id="basketCounter"]'
     catalog_products_xpath = '//*[@id="header"]/div[3]/div[1]/a'
-    spets_tsena_po_karte_xpath = '//a[@href="/catalog/spets-tsena-po-karte/"]'
+
+    spets_tsena_po_karte_xpath = '//*[@id="catalog-dropdown"]/nav/a[1]'
     click_add_to_basket_link_text = 'Перейти в корзину'
     click_delete_xpath = '//button[@class="order-product__btn-del"]'
     click_search = '//input[@class="search-form__item ui-autocomplete-input"]'
@@ -47,5 +48,5 @@ class Locators:
     link_youtube_xpath = '//*[@id="header"]/div[2]/div/div[1]/div[3]/a[5]/i'
     email_us_link_text = 'НАПИШИТЕ НАМ'
     close_the_form_link_text = 'НАПИШИТЕ НАМ'
-    exit_xpath = '//*[@id="logout"]'
+    exit_xpath = '//*[@id="header"]/div[2]/div/div[2]/a[1]'
 
