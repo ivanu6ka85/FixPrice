@@ -29,9 +29,9 @@ class Locators:
     save_changes_name = 'save'
     basket_xpath = '//span[@id="basketCounter"]'
     catalog_products_xpath = '//*[@id="header"]/div[3]/div[1]/a'
-
     spets_tsena_po_karte_xpath = '//*[@id="catalog-dropdown"]/nav/a[1]'
-    click_add_to_basket_link_text = 'Перейти в корзину'
+
+    click_add_to_basket_xpath = '//a[contains(text(),"Перейти в корзину")]'
     click_delete_xpath = '//button[@class="order-product__btn-del"]'
     click_search = '//input[@class="search-form__item ui-autocomplete-input"]'
     click_search_button = '//i[@class="icon icon-loupe"]'
@@ -49,4 +49,7 @@ class Locators:
     email_us_link_text = 'НАПИШИТЕ НАМ'
     close_the_form_link_text = 'НАПИШИТЕ НАМ'
     exit_xpath = '//*[@id="header"]/div[2]/div/div[2]/a[1]'
+    click_android_xpath = '//a[@href="https://play.google.com/store/apps/details?id=ru.bestprice.fixprice&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"]'
+    click_Ios = '//a[@href="https://itunes.apple.com/ru/app/fix-price/id1460007771?mt=8"]'
+
 
