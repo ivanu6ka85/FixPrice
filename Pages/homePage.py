@@ -27,7 +27,8 @@ class HomePage:
         self.click_basket_xpath = Locators.basket_xpath
         self.catalog_products_xpath = Locators.catalog_products_xpath
         self.spets_tsena_po_karte_xpath = Locators.spets_tsena_po_karte_xpath
-        self.click_add_to_basket_link_text = Locators.click_add_to_basket_link_text
+
+        self.click_add_to_basket_xpath = Locators.click_add_to_basket_xpath
         self.click_delete_xpath = Locators.click_delete_xpath
         self.click_search_xpath = Locators.click_search
         self.click_search_button_xpath = Locators.click_search_button
@@ -45,7 +46,8 @@ class HomePage:
         self.email_us_link_text = Locators.email_us_link_text
         self.close_the_form_link_text = Locators.close_the_form_link_text
         self.exit_xpath = Locators.exit_xpath
-
+        self.click_android_xpath = Locators.click_android_xpath
+        self.click_Ios_xpath = Locators.click_Ios
 
 
 
@@ -118,7 +120,7 @@ class HomePage:
         self.driver.find_element(By.XPATH, self.click_basket_xpath).click()
 
     def click_add_to_basket(self):
-        self.driver.find_element(By.LINK_TEXT, self.click_add_to_basket_link_text).click()
+        self.driver.find_element(By.XPATH, self.click_add_to_basket_xpath).click()
 
     def click_delete(self):
         self.driver.find_element(By.XPATH, self.click_delete_xpath).click()
@@ -171,5 +173,13 @@ class HomePage:
 
     def click_exit(self):
         self.driver.find_element(By.XPATH, self.exit_xpath).click()
+
+    def click_android(self):
+        self.driver.find_element(By.XPATH, self.click_android_xpath).click()
+
+    def click_Ios(self):
+        self.driver.find_element(By.XPATH, self.click_Ios_xpath).click()
+
+
 
 
