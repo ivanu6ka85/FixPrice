@@ -30,7 +30,6 @@ class Locators:
     basket_xpath = '//span[@id="basketCounter"]'
     catalog_products_xpath = '//*[@id="header"]/div[3]/div[1]/a'
     spets_tsena_po_karte_xpath = '//*[@id="catalog-dropdown"]/nav/a[1]'
-
     click_add_to_basket_xpath = '//a[contains(text(),"Перейти в корзину")]'
     click_delete_xpath = '//button[@class="order-product__btn-del"]'
     click_search = '//input[@class="search-form__item ui-autocomplete-input"]'
@@ -40,7 +39,9 @@ class Locators:
     click_card_fix_price = '//a[@href="/bonus/" and @class="nav__item "]'
     click_Pickup_store = '//a[@href="/online/" and @class="nav__item active"]'
     click_good_deeds = '//a[@href="/good-deeds/" and @class="nav__item "]'
-    click_work_with_us = '//a[@href="/work/" and @class="nav__item "]'
+    click_work_with_us = '#header > div.header__nav > div:nth-child(1) > nav > a:nth-child(6)'
+    click_work_with_us_sklad_css_selector = 'body > div.page-header.page-header--color-bg > div > div.nav-tabs__wrap > ul > li:nth-child(2) > a'
+    click_work_with_us_in_office_css_selector = 'body > div.page-header.page-header--color-bg > div > div.nav-tabs__wrap > ul > li:nth-child(3) > a'
     link_vk_xpath = '//*[@id="header"]/div[2]/div/div[1]/div[3]/a[1]/i'
     link_tiktok_xpath = '//*[@id="header"]/div[2]/div/div[1]/div[3]/a[2]/i'
     link_odnoklassniki = '//*[@id="header"]/div[2]/div/div[1]/div[3]/a[3]/i'
@@ -48,8 +49,10 @@ class Locators:
     link_youtube_xpath = '//*[@id="header"]/div[2]/div/div[1]/div[3]/a[5]/i'
     email_us_link_text = 'НАПИШИТЕ НАМ'
     close_the_form_link_text = 'НАПИШИТЕ НАМ'
-    exit_xpath = '//*[@id="header"]/div[2]/div/div[2]/a[1]'
+    exit_xpath = '//a[@href="/work/shop/form.php?logout=yes"]'
     click_android_xpath = '//a[@href="https://play.google.com/store/apps/details?id=ru.bestprice.fixprice&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"]'
     click_Ios = '//a[@href="https://itunes.apple.com/ru/app/fix-price/id1460007771?mt=8"]'
+    click_map_page_xpath = '//a[@href="/sitemap/"]'
+    click_top_logo = '//div[@class="main-brands__title"]'
 
 
