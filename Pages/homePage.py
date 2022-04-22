@@ -27,7 +27,6 @@ class HomePage:
         self.click_basket_xpath = Locators.basket_xpath
         self.catalog_products_xpath = Locators.catalog_products_xpath
         self.spets_tsena_po_karte_xpath = Locators.spets_tsena_po_karte_xpath
-
         self.click_add_to_basket_xpath = Locators.click_add_to_basket_xpath
         self.click_delete_xpath = Locators.click_delete_xpath
         self.click_search_xpath = Locators.click_search
@@ -37,7 +36,9 @@ class HomePage:
         self.click_card_fix_price_xpath = Locators.click_card_fix_price
         self.click_Pickup_store_xpath = Locators.click_Pickup_store
         self.click_good_deeds_xpath = Locators.click_good_deeds
-        self.click_work_with_us_xpath = Locators.click_work_with_us
+        self.click_work_with_us_css_selector = Locators.click_work_with_us
+        self.click_work_with_us_sklad_css_selector = Locators.click_work_with_us_sklad_css_selector
+        self.click_work_with_us_in_office_css_selector = Locators.click_work_with_us_in_office_css_selector
         self.link_vk_xpath = Locators.link_vk_xpath
         self.link_tiktok_xpath = Locators.link_tiktok_xpath
         self.click_link_odnoklassniki_xpath = Locators.link_odnoklassniki
@@ -48,6 +49,9 @@ class HomePage:
         self.exit_xpath = Locators.exit_xpath
         self.click_android_xpath = Locators.click_android_xpath
         self.click_Ios_xpath = Locators.click_Ios
+        self.click_map_page_xpath = Locators.click_map_page_xpath
+        self.click_top_logo_xpath = Locators.click_top_logo
+
 
 
 
@@ -148,7 +152,14 @@ class HomePage:
         self.driver.find_element(By.XPATH, self.click_good_deeds_xpath).click()
 
     def click_work_with_us(self):
-        self.driver.find_element(By.XPATH, self.click_work_with_us_xpath).click()
+        self.driver.find_element(By.CSS_SELECTOR, self.click_work_with_us_css_selector).click()
+
+    def click_work_with_us_sklad(self):
+        self.driver.find_element(By.CSS_SELECTOR, self.click_work_with_us_sklad_css_selector).click()
+
+    def click_work_with_us_in_office(self):
+        self.driver.find_element(By.CSS_SELECTOR, self.click_work_with_us_in_office_css_selector).click()
+
 
     def click_link_vk(self):
         self.driver.find_element(By.XPATH, self.link_vk_xpath).click()
@@ -179,6 +190,15 @@ class HomePage:
 
     def click_Ios(self):
         self.driver.find_element(By.XPATH, self.click_Ios_xpath).click()
+
+    def click_map_page(self):
+        self.driver.find_element(By.XPATH, self.click_map_page_xpath).click()
+
+    def click_top_logo(self):
+        self.driver.find_element(By.XPATH, self.click_top_logo_xpath).click()
+
+
+
 
 
 
