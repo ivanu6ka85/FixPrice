@@ -314,7 +314,7 @@ class LoginTest(unittest.TestCase):
         driver.find_element(By.XPATH, '//*[@id="catalog-dropdown"]/nav/a[1]').click()
 
         homepage = HomePage(driver)
-        # homepage.spets_tsena_po_karte_xpath()
+        homepage.spets_tsena_po_karte_xpath()
 
         message_21 = driver.find_element(By.XPATH, '//*[@id="catalog-dropdown"]/nav/a[1]').text
         self.assertEqual(message_21, '')
@@ -339,7 +339,6 @@ class LoginTest(unittest.TestCase):
         self.assertEqual(len(products), len(button_pay))
 
 
-
     def test_29_check_buys(self):
         """Добавление товара в корзину (Подсолнечное масло "Классическое", Mr.Ricco, рафинированное, 1 л ).
         Наличие кнопки 'Перейти в корзину' в ней"""
@@ -349,15 +348,17 @@ class LoginTest(unittest.TestCase):
         driver.find_element(By.XPATH, '//*[@id="catalog_sect_cont"]/div[1]/div[3]/div/div[2]/span').click()
         time.sleep(2)
         driver.find_element(By.XPATH, '//a[@class="btn btn-default btn-full"]').click()
+
         driver.find_element(By.XPATH, '// *[ @ id = "modalProduct"] / div / div / div[1] / div / aside / div[4] / a[1]').click()
 
         homepage = HomePage(driver)
         homepage.click_add_to_basket()
-        time.sleep(5)
-        # homepage.click_basket()
 
-        message_24 = driver.find_element(By.XPATH, '//a[contains(text(),"Перейти в корзину")]').is_displayed()
+        time.sleep(1)
+        message_24 = driver.find_element(By.CSS_SELECTOR, '#modalProduct > div > div > div:nth-child(3) > div > aside > div.order-total-bottom__btns > a.btn.btn-default.btn-full').is_displayed()
         self.assertEqual(message_24, True)
+
+
 
     def test_30_click_basket(self):
         """Проверка кликабельности кнопки 'В корзине'"""
@@ -401,9 +402,11 @@ class LoginTest(unittest.TestCase):
         # товар из корзины удаляется, но тест падает.
         driver = self.driver
         self.driver.execute_script("scroll(0, 1300);")
+        time.sleep(5)
 
         homepage = HomePage(driver)
         homepage.click_delete()
+
 
         message_29 = driver.find_element(By.XPATH, '//button[@class="order-product__btn-del"]').text
         self.assertEqual(message_29, '')
@@ -491,37 +494,57 @@ class LoginTest(unittest.TestCase):
         homepage = HomePage(driver)
         homepage.click_work_with_us()
 
-        message_38 = driver.find_element(By.XPATH, '//a[@href="/work/" and @class="nav__item "]').text
+        message_38 = driver.find_element(By.CSS_SELECTOR, '#header > div.header__nav > div:nth-child(1) > nav > a:nth-child(6)').text
         self.assertEqual(message_38, 'РАБОТА У НАС')
 
-    def test_43_click_email_us(self):
-        """Появления формы для отправки отзыва после нажатия на кнопку 'НАПИШИТЕ НАМ' в подвале сайта"""
+    def test_43_click_work_with_us_sklad(self):
+        """Проверка кликабельности кнопки 'Работа на складе' """
+
         driver = self.driver
-        driver.find_element(By.XPATH, '/ html / body / header / div / div / div[3] / div / a[2]').click()
-        self.driver.execute_script("scroll(0, 1600);")
-        driver.find_element(By.XPATH, '//*[@id="comp_9ae22ea7706519224f65cd9602247a16"]/div[2]/div/form/div[1]/div[1]/input').click()
+
+        homepage = HomePage(driver)
+        homepage.click_work_with_us_sklad()
+
+        message_39 = driver.find_element(By.CSS_SELECTOR, 'body > div.page-header.page-header--color-bg > div > div.nav-tabs__wrap > ul > li:nth-child(2) > a').text
+        self.assertEqual(message_39, 'РАБОТА НА СКЛАДЕ')
+
+    def test_44_click_work_with_us_in_office(self):
+        """Проверка кликабельности кнопки 'Работа на складе' """
+
+        driver = self.driver
+
+        homepage = HomePage(driver)
+        homepage.click_work_with_us_in_office()
+
+        message_40 = driver.find_element(By.CSS_SELECTOR, 'body > div.page-header.page-header--color-bg > div > div.nav-tabs__wrap > ul > li:nth-child(3) > a').text
+        self.assertEqual(message_40, 'РАБОТА В ОФИСЕ')
+
+
+    def test_45_click_email_us(self):
+        """Появления формы для отправки анкеты для приёма на работу"""
+        driver = self.driver
+
+        self.driver.execute_script("scroll(0, 1500);")
 
         homepage = HomePage(driver)
 
-        time.sleep(5)
-        message_46 = driver.find_element(By.LINK_TEXT, 'НАПИШИТЕ НАМ').is_displayed()
+        time.sleep(2)
+        message_46 = driver.find_element(By.XPATH, '//div[@class="office-vacancy__button-text js-toggle-button-hided-content"]').is_displayed()
         self.assertEqual(message_46, True)
 
-        homepage.click_close_the_form()
 
-
-    def test_44_click_exit(self):
+    def test_46_click_exit(self):
         """Проверка кликабельности кнопки 'Выйти' """
         driver = self.driver
 
         homepage = HomePage(driver)
         homepage.click_exit()
 
-        message_47 = driver.find_element(By.XPATH, '//*[@id="header"]/div[2]/div/div[2]/a[1]').text
+        message_47 = driver.find_element(By.XPATH, '//a[@href="/work/shop/form.php?logout=yes"]').text
         self.assertEqual(message_47, '')
         time.sleep(2)
 
-    def test_45_click_android(self):
+    def test_47_click_android(self):
         """Проверка кликабельности кнопки скачивания мобильного приложения на Андройд """
         driver = self.driver
         self.driver.execute_script("scroll(0, 1300);")
@@ -529,10 +552,16 @@ class LoginTest(unittest.TestCase):
         homepage = HomePage(driver)
         homepage.click_android()
 
-        message_38 = driver.find_element(By.XPATH, '//a[@href="https://play.google.com/store/apps/details?id=ru.bestprice.fixprice&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"]').text
-        self.assertEqual(message_38, '')
+        message_38 = driver.find_element(By.XPATH, '//a[@href="https://play.google.com/store/apps/details?id=ru.bestprice.fixprice&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"]').get_attribute('href')
+        driver.switch_to.window(driver.window_handles[1])
+        link_social_media_after_click = driver.current_url
 
-    def test_46_click_Ios(self):
+        self.assertEqual(message_38, link_social_media_after_click)
+
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
+
+    def test_48_click_Ios(self):
         """Проверка кликабельности кнопки скачивания мобильного приложения на App Store """
         driver = self.driver
         self.driver.execute_script("scroll(0, 1300);")
@@ -540,34 +569,39 @@ class LoginTest(unittest.TestCase):
         homepage = HomePage(driver)
         homepage.click_Ios()
 
-        message_38 = driver.find_element(By.XPATH, '//a[@href="https://play.google.com/store/apps/details?id=ru.bestprice.fixprice&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"]').text
-        self.assertEqual(message_38, '')
+        message_39 = driver.find_element(By.XPATH, "//a[@href='https://itunes.apple.com/ru/app/fix-price/id1460007771?mt=8']").get_attribute('href')
+        driver.switch_to.window(driver.window_handles[1])
+        link_social_media_after_click = driver.current_url
 
+        self.assertEqual(message_39, link_social_media_after_click)
 
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
 
-    # def test_23_lens_products_and_imgs(self):
-    #     """Сравнения количества товаров и картинок к ним (категория 'Спец цена по карте')"""
-    #     driver = self.driver
-    #
-    #     homepage = HomePage(driver)
-    #     homepage.spets_tsena_po_karte_xpath()
-    #
-    #     products = driver.find_elements(By.CLASS_NAME, 'product-card product-card--md')
-    #     imgs = driver.find_elements(By.CLASS_NAME, 'product-card__img')
-    #
-    #     self.assertEqual(len(products), len(imgs))
-    #
-    # #    def test_22_lens_products_and_imgs(self):
-    #     """Сравнения количества товаров и картинок к ним (категория 'Спец цена по карте')"""
-    #     driver = self.driver
-    #
-    #     homepage = HomePage(driver)
-    #     homepage.spets_tsena_po_karte_xpath()
-    #
-    #     products = driver.find_elements(By.CLASS_NAME, 'product-card product-card--md')
-    #     imgs = driver.find_elements(By.CLASS_NAME, 'product-card__img')
-    #
-    #     self.assertEqual(len(products), len(imgs))
+    def test_49_presence_brands(self):
+        """Проверка, что на главной странице сайта представлены бренды, с которыми работает компания"""
+        driver = self.driver
+        driver.get('https://fix-price.ru/work/shop/form.php')
+        self.driver.execute_script("scroll(0, 2300);")
+
+        homepage = HomePage(driver)
+        homepage.click_top_logo()
+
+        message_49 = driver.find_element(By.XPATH, '//div[@class="main-brands__title"]').is_displayed()
+        self.assertEqual(message_49, True)
+
+    def test_50_click_map_page(self):
+        """Проверка кликабельности кнопки "карта сайта" в подвале страницы """
+        driver = self.driver
+        driver.get('https://fix-price.ru/work/shop/form.php')
+        self.driver.execute_script("scroll(0, 2500);")
+
+        homepage = HomePage(driver)
+        homepage.click_map_page()
+
+        message_47 = driver.find_element(By.XPATH, "//a[@href='https://itunes.apple.com/ru/app/fix-price/id1460007771?mt=8']").text
+        self.assertEqual(message_47, '')
+
 
     @classmethod
     def tearDownClass(cls):
